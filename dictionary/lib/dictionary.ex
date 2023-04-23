@@ -1,23 +1,13 @@
 defmodule Dictionary do
-  @moduledoc """
-  Documentation for `Dictionary`.
-  """
+  alias Dictionary.Impl.WordList 
 
-  @doc """
-  ## Examples
+  @opaque t :: WordList.t
+  
+  @spec start() :: t
+  defdelegate start, to: WordList, as: :word_list  
 
-      iex> Dictionary.word_list()
-      ["foo", "bar", ...]
-
-  """
-
-  @word_list System.get_env("DICTIONARY_FILEPATH")
-    |> File.read!  
-    |> String.split("\n", trim: true)
-
-  def random_word do
-    @word_list
-    |> Enum.random
-  end
+  @spec random_word(t) :: String.t
+  defdelegate random_word(word_list), to: WordList 
+  
 
 end
