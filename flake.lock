@@ -1,5 +1,17 @@
 {
   "nodes": {
+    "dictionary": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-BIoVU/qP8jWsr6zRXp8FHUee+95Yh30MoXNPHPFflDQ=",
+        "type": "file",
+        "url": "https://coding-gnome.com/courses/e4p2/assets/words.txt"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://coding-gnome.com/courses/e4p2/assets/words.txt"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1682109806,
@@ -18,6 +30,7 @@
     },
     "root": {
       "inputs": {
+        "dictionary": "dictionary",
         "nixpkgs": "nixpkgs",
         "utils": "utils"
       }

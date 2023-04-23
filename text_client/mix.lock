@@ -1,0 +1,3 @@
+%{
+  "flip": {:hex, :flip, "0.1.0", "9987e530b2f0aaf9334bf8ecf0d4ba9b9d51708a2bc24190bdb633a8a854dade", [:mix], [], "hexpm", "f8788d9f1184449965165e2eb6a62703a394325733b7b693e606076e5e5a1275"},
+}
