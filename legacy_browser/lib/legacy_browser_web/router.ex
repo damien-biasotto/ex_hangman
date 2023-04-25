@@ -14,10 +14,11 @@ defmodule LegacyBrowserWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", LegacyBrowserWeb do
+  scope "/hangman", LegacyBrowserWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/", HangmanController, :index
+    post "/new", HangmanController, :new
   end
 
   # Other scopes may use custom stacks.
