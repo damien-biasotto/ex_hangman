@@ -19,8 +19,10 @@
         buildInputs = with pkgs; [
           elixir
           elixir_ls
-          nixfmt  
+          nixfmt
           gitui
+          tree
+          inotify-tools
         ];
         DICTIONARY_FILEPATH="${dictionary}";
         shellHook = ''
