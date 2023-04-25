@@ -1,0 +1,29 @@
+<.flash_group flash={@flash} />
+
+<div class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 h-screen">
+  <div class="px-4 sm:px-6 md:px-8">
+    <div class="relative max-w-5xl mx-auto pt-20 sm:pt-24 lg:pt-32">
+      <h1 class="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
+	<pre><%= figure_for(@tally.turns_left) %></pre>
+      </h1>
+    </div>
+    <div class="relative max-w-5xl mx-auto pt-20 sm:pt-24 lg:pt-32">
+      <h1 class="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white"><%= @tally.letters |> Enum.join(" ") %></h1>
+    </div>
+  </div>
+  <div class="px-4 sm:px-6 md:px-8 mt-32">
+    <div class="grid grid-cols-2 gap-2">
+      <div>
+	<p>Turns left: <%= @tally.turns_left %></p>
+      </div>
+      <div>
+	<p> Used letters: <%= @tally.used |> Enum.join(", ") %></p>
+      </div>
+    </div>
+
+    <%= move_status(@tally.game_state) %>
+    <div class="mt-16 pb-16 flex flex-col  w-full">
+      <%= continue_or_try_again(@conn, @tally.game_state) %>
+      </div>
+  </div>
+</div>

@@ -19,7 +19,6 @@ defmodule LegacyBrowser.MixProject do
   def application do
     [
       mod: {LegacyBrowser.Application, []},
-      included_applications: [:hangman],
       extra_applications: [:logger, :runtime_tools]
     ]
   end

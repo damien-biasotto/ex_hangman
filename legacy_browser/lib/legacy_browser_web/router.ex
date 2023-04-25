@@ -18,7 +18,9 @@ defmodule LegacyBrowserWeb.Router do
     pipe_through :browser
 
     get "/", HangmanController, :index
-    post "/new", HangmanController, :new
+    post "/", HangmanController, :new
+    put "/", HangmanController, :update
+    get "/current", HangmanController, :show
   end
 
   # Other scopes may use custom stacks.
