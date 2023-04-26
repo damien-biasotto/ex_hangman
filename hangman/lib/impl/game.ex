@@ -47,8 +47,8 @@ defmodule Hangman.Impl.Game do
   end
   
   defp accept_guess(game, guess, _already_used) do
-    %{ game | used: MapSet.put(game.used, String.downcase guess) }
-    |> score_guess(Enum.member?(Enum.map(game.letters, String.downcase), String.downcase guess))
+    %{ game | used: MapSet.put(game.used, String.downcase(guess)) }
+    |> score_guess(Enum.member?(Enum.map(game.letters, fn l -> String.downcase l end), String.downcase guess))
   end
   
   defp score_guess(game, _good_guess = true) do
