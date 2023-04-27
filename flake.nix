@@ -36,25 +36,22 @@
 (eval . (add-hook 'heex-ts-mode-hook 'eglot-ensure)))))
             '';
           };
-          sub-dir-locals =  pkgs.writeTextFile {
-            name = ".dir-locals.el";
+
+          helix-lang = pkgs.writeTextFile {
+            name = "languages.toml";
             text = ''
-               ((elixir-ts-mode
-  . ((eglot-workspace-configuration
-      . ((:elixirLS . (:projectDir (locate-dominating-file default-directory
-                                               ".dir-locals.el")))))))
-(heex-ts-mode
-  . ((eglot-workspace-configuration
-      . ((:elixirLS . (:projectDir (locate-dominating-file default-directory
-                                               ".dir-locals.el"))))))))
+            [[language]]
+            name = "elixir"
+            language-server = { command = "${pkgs.elixir_ls}/bin/elixir-ls", args = ["--sdtin"]}
+            auto-format = true
             '';
           };
         in
           ''
+          mkdir -p .helix
+          cat ${helix-lang} > .helix/${helix-lang.name}
+          
           cat ${root-dir-locals} > .dir-locals.el
-          cat ${sub-dir-locals} > hangman/.dir-locals.el
-          cat ${sub-dir-locals} > text_client/.dir-locals.el
-          cat ${sub-dir-locals} > dictionary/.dir-locals.el
         '';
       };
     }

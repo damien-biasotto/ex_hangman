@@ -13,7 +13,7 @@ defmodule Hangman.Runtime.Server do
   
   def init(_) do
     watcher = Watchdog.start(@idle_timeout)
-    { :ok, Game.new_game, watcher }
+    { :ok, {Game.new_game, watcher }}
   end 
 
   def handle_call({ :make_move, guess }, _from, { game, watcher }) do
@@ -21,7 +21,6 @@ defmodule Hangman.Runtime.Server do
     Watchdog.alive(watcher)
     { :reply, tally, { updated_game, watcher } }
   end
-
 
   def handle_call({ :tally }, _from, { game, watcher }) do
     Watchdog.alive(watcher)
