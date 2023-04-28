@@ -1,4 +1,4 @@
 [[language]]
 name = "elixir"
-language-server = { command = "/nix/store/45h0hl9vv9y9jh9rxil4hygip2wd285c-elixir-ls-0.13.0/bin/elixir-ls", args = ["--sdtin"]}
+language-server = { command = "/nix/store/w73hc4a2a2796zp6pcjch1z2k9116h0k-elixir-ls-0.13.0/bin/elixir-ls", args = ["--sdtin"]}
 auto-format = true

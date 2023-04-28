@@ -22,8 +22,10 @@
           nixfmt
           gitui
           tree
-          inotify-tools
-        ];
+        ] 
+        ++ pkgs.lib.optional pkgs.stdenv.isLinux pkgs.inotify-tools
+        ++ pkgs.lib.optionals pkgs.stdenv.isDarwin (with pkgs.darwin.apple_sdk.frameworks; [CoreFoundation CoreServices])
+        ;
         DICTIONARY_FILEPATH="${dictionary}";
         shellHook = let
           root-dir-locals = pkgs.writeTextFile {
